@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate')%>
+<br><br>
+<style>
+ .cd{
+   display: flex;
+  justify-content: center;
+  flex-direction:  row !important;
+ margin-left: 0px;
+ margin-right:0px;
+}
+</style>
+<div class="cd flex-wrap">
+<% for (let ngo of Ngo) { %>
+  <% for (let i=0;i<((ngo.categories).length);i++) { %>  
+
+    <% if((ngo.categories[i])===cat) { %>
+  
+<div class="card col-6">
+  <div class="mb-2 mt-2" style="text-align: center;">
+    <div class="card-title">
+      <h3 class="card-subtitle mb-2 text-body-secondary"><%=ngo.username%></h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%=ngo.categories%> </p>
+      
+      <p style="color: gray;" class="card-text">followers:<%=ngo.follower.length%></p>
+      <% if(currentUser!=undefined) { %>
+      <form action="/homepage/<%=ngo._id%>?_method=PUT" method="POST">
+        <button class="btn btn-outline-dark mt-1 mb-1">follow</button>
+      </form> 
+       <% } %>
+    </div>
+    <a class="btn" style="background-color: black; color: white;" href="/homepage/<%=ngo._id%>">View NGO</a>
+  </div>
+  </div>
+  <br>
+  <br>
+  <% } %>
+  <% } %>
+
+  <% } %>
+</div>

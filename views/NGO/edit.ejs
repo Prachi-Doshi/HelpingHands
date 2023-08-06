@@ -1,0 +1,91 @@
+<% layout('layouts/boilerplate')%>
+    <div class="col-6 offset-3 mt-2 mb-2">
+        <h1 class="text-center" style="color: black; text-transform: uppercase;">Registeration Form</h1>
+   
+     <form action="/NGO/homepage/<%=user._id%>?_method=PUT" method="POST" novalidate class="row g-3 needs-validation">
+       <div class="mb-3">
+           <label class="form-label" for="username"> username</label>
+           <input class="form-control" type="text" id="username" name="username" value="<%=user.username%>"required>
+           <div class="valid-feedback">
+               valid!
+           </div>
+       </div>
+   
+       <div class="mb-3">
+           <label class="form-label" for="email">mail</label>
+           <input class="form-control" type="email" id="email" name="email" value="<%=user.email%>" required>
+           <div class="valid-feedback">
+               valid!
+           </div>
+       </div>
+       <div class="mb-3">
+        <label class="form-label" for="description">description</label>
+        <input class="form-control" type="text" id="description" name="description" value="<%=user.description%>" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="state"> State</label>
+      <input class="form-control" type="text" id="state" name="state" value="<%=user.state%>"required>
+      <div class="valid-feedback">
+          valid!
+      </div>
+  </div>
+       <div class="mb-3">
+        <label class="form-label" for="contactperson1">Contact person</label>
+        <input class="form-control" type="text" id="contactperson1" name="contactperson1" value="<%=user.contactperson1%>" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+
+       <div class="mb-3">
+        <label class="form-label" for="contactNo1">Contact No1:</label>
+        <input class="form-control" type="number" id="contactNo1" name="contactNo1" value="<%=user.contactNo1%>" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+       
+    <div class="mb-3">
+        <label class="form-label" for="contactperson2">Contact person Name 2</label>
+        <input class="form-control" type="text" id="contactperson2" name="contactperson2" value="<%=user.contactperson2%>" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="contactNo2">Contact no 2:</label>
+        <input class="form-control" type="number" id="contactNo2" name="contactNo2" value="<%=user.contactNo2%>" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox"  name="categories" value="clothes" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          clothes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="categories" value="funds" id="flexCheckChecked1" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          funds
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="categories" value="stationary" id="flexCheckDefault2">
+        <label class="form-check-label" for="flexCheckDefault">
+          stationary
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="categories" value="utensils" id="flexCheckChecked3" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          utensils
+        </label>
+      </div>
+      <input type="hidden" name="_method" value="PUT">
+    <button class="btn btn-sm btn-dark" type="submit" >Edit</button>
+</form>

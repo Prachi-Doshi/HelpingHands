@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate')%>
+<style>
+  .card{
+    margin-left:25%;
+  }
+  .wrapper {
+  /* margin-left:75%; */
+  margin-top: 0.2%;
+}
+
+#search-container {
+  margin: 0.2em 0;
+}
+#search-container input {
+  background-color: transparent;
+  width: 35vh;
+  height: 40px;
+  border-radius: 20px;
+  border-bottom: 2px solid #110f29;
+  padding: 0.7em 0.3em;
+
+}
+#search-container input:focus {
+  border-bottom-color: #6759ff;
+}
+  </style>
+
+<div class="col-6 offset-2">
+<div class="mt-2">
+  <div class="card-header align-text-center">
+      <div class="wrapper mb-2" >
+          <div id="search-container"><strong class="book exp" style="margin-right:65%">ALL NGOs</strong>
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Search NGO By State Here.."
+              onkeyup="searchfun()">
+              <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
+            </div>
+          </div>
+      </div>
+      </div>
+</div>
+      <div id="Allngos">
+<% for (let ngo of Ngo) { %>
+  <div class="card col-5 mb-2">
+    <div class="row mb-5 mt-5">
+      <div class="col-md-6" >
+        <% if(ngo.images.length!==0) { %>
+          <h5 class="card-title"><img src="https://th.bing.com/th/id/OIP.-Qx06te8DzeajkYOu0IW1AHaEJ?w=316&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" height="120px" width="90%" alt="no img" style="margin-left: 10px"></h5>
+          <% } %>
+      </div>
+      <div class="col-md-6">
+        <h3 class="card-subtitle mb-2 text-body-secondary"><%=ngo.username%></h3>
+      <p class="card-text state"><%=ngo.state%></p>
+      <p class="card-text"><%=ngo.categories%> </p>
+      <% if(currentUser!=undefined) { %>
+        <form action="/homepage/<%=ngo._id%>?_method=PUT" method="POST">
+          <button class="btn btn-outline-dark mt-1 mb-1">follow</button>
+        </form> 
+         <% } %>
+         <br>
+         <a class="btn btn-dark btn-l" style="margin: 10; width: 250px;"  href="/homepage/view/<%=ngo._id%>">View NGO</a>
+        </div>
+        <br>
+      </div>
+    </div>
+</div>
+  <% } %>
+      
+    </div>
+  <script>
+    const searchfun=()=>{
+        let filter =document.getElementById('search-input').value.toUpperCase();
+        let All =document.getElementById('Allngos');
+        let state=All.getElementsByClassName('card');
+        
+        for(var i=0; i<state.length;i++){
+            let title=state[i].getElementsByClassName('state')[0].innerText;
+            if(title.toUpperCase().indexOf(filter)>-1){
+              state[i].style.display="";
+            }else{
+              state[i].style.display="none";
+            }
+        }
+    }
+</script>

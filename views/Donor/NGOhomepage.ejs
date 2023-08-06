@@ -1,0 +1,81 @@
+<% layout('layouts/boilerplate')%>
+<style>
+   .cd{
+   display: flex;
+  justify-content: center;
+  flex-direction:  row !important;
+ margin-left: 0px;
+ margin-right:0px;
+}
+#Allevents{
+  margin: 10px 15px;
+   display: flex;
+  justify-content: space-evenly;
+  flex-direction:  row !important;
+ margin-left: 0px;
+ margin-right:0px;
+}
+</style>
+<div clas="col-6 offset-3 " style="margin: 75px">
+<div class="card"  style="text-align: center;">
+    
+    <h1><%=ngo.username%></h1>
+    <p style="color: gray;"> Followers:<%=ngo.follower.length%></p>
+    <hr>
+    <p> State: <%=ngo.state%></p>
+    <p> Contact Us At: <%=ngo.email%></p>
+    <span><%=ngo.contactperson1%>&nbsp;|&nbsp;<%=ngo.contactNo1%></span>
+    <span><%=ngo.contactperson2%>&nbsp;|&nbsp;<%=ngo.contactNo2%></span>
+    <p> <%=ngo.description%></p>
+    <p> Follow us on Instagram: <%=ngo.instalink%></p>
+    <p> Follow us on Facebook: <%=ngo.facebooklink%></p>
+    
+    
+  </div>
+</div>
+<h1 style="text-align: center;">Events</h1>
+<div class="cd flex-wrap">
+  <% for(let meme of ngo.Events) {%>  
+
+ <div class="card col-4">
+  <div class="card-header">
+    <%=meme.eventname%>
+  </div>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+  <% for(let i=0;i < (meme.images.length);i++) {%> 
+  <% if(i === 0) {%> 
+        <div class="carousel-item active" data-bs-interval="2500">
+          <img src="<%=meme.images[i].path%>" height="200px" width="300px"  class="d-block w-100" alt="">
+      </div>
+   <%} else {%>
+          <div class="carousel-item" data-bs-interval="2500">
+              <img src="<%=meme.images[i].path%>" height="200px" width="300px"  class="d-block w-100" alt="">
+          </div>
+  <% } %>
+  <% } %>
+  </div>
+  <div class="card-text"><%=meme.eventdetails%></div>
+    </div>
+  
+  </div>
+  <% } %>
+</div>
+<br>
+<h1 style="text-align: center;">Fundraisers</h1>
+  <div id="Allevents">
+
+    <% for (let emergency of ngo.Emergencies ) { %>
+    <div class="card col-4" style="width: 18rem;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= emergency.title %></h6>
+        <p class="card-text"><%= emergency.details %></p>
+        <p class="card-text"><%= emergency.requirements %></p>
+      </div>
+   
+    <form class="d-inline" action="/homepage/delete/<%=ngo._id%>/<%=emergency._id%>?_method=DELETE" method="POST">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+  <% } %>
+</div>

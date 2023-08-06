@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate')%>
+        <div id="Allevents" style="
+                            background-color: black;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+            <% for (let emg of Ngo) { %>
+                <% for (let emergency of emg.Emergencies ) { %>
+                    <div class="card" style="
+                                width: 500px;
+                              padding: 10px;
+                                background-color: orange;
+                                border-radius: 15px;
+                                margin: 50px;">
+                        <div class="card-body" style="color: white;">
+                            <h4 class="card-subtitle mb-2 text-body-secondary" style="
+                                                                                        text-transform: uppercase; 
+                                                                                        font-size: 25px; 
+                                                                                        font-weight: 800;">
+                                <%= emergency.title %>
+                            </h4>
+                            <h6 class="card-text" style="font-weight: bold;">Requirements: 
+                                <%= emergency.requirements %>
+                            </h6>
+                            <p class="card-text">
+                                <%= emergency.details %>
+                            </p>
+                            
+                        </div>
+
+                        <a class="btn btn-primary" href="/homepage/view/<%=Ngo._id%>" style="
+                                                                                        background-color: white; 
+                                                                                        color: black; 
+                                                                                        margin: 10px; 
+                                                                                        width: 100px; 
+                                                                                        height: 30px; 
+                                                                                        font-size: 12px; 
+                                                                                        border: none;">
+                            View NGO
+                        </a>
+                    </div>
+                    <% } %>
+                        <% } %>
+        </div>

@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate')%>
+<style>
+    .outer {
+        margin: 120px;
+    }
+
+    .card {
+        width: 15rem;
+    }
+    .event{
+        margin-left:25%;
+        border: solid black 2px;
+        border-radius: 5px;
+    }
+</style>
+<div class="outer">
+ <div class="event col-4 mb-2 p-2">
+     <form class="aeve " action="/NGO/homepage/<%=ngo._id%>/addemg" method="POST" >
+         <div class="mb-3">
+             <label class="form-label" for="title">Title</label>
+             <input class="form-control" type="text" id="title" name="title" required>
+             <div class="valid-feedback">
+                 Looks good!
+             </div>
+         </div>
+         <div class="mb-3">
+             <label class="form-label" for="details"> Details</label>
+             <textarea class="form-control" type="text" id="details" name="details" rows="5" required></textarea>
+             <div class="valid-feedback">
+                 Looks good!
+             </div>
+         </div>
+         <div class="mb-3">
+            <label class="form-label" for="requirements">Requirements</label>
+            <input class="form-control" type="text" id="requirements" name="requirements" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+         <button class="btn btn-outline-dark mt-1 mb-1" type="submit">Add</button>
+       </form>
+ </div>
+</div>

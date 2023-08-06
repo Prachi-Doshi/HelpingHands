@@ -1,0 +1,13 @@
+<% layout('layouts/boilerplate')%>
+<% if(Ngo.images.length!==0) { %>
+    <h5 class="card-title"><img src="<%=Ngo.images[0].path%>" height="120px" width="180px"></h5>
+    <% } %>
+    <h1>NGO name: <%=Ngo.username%></h1>
+    <h1> Email address:<%=Ngo.email%></h1>
+    <h1> contact person: <%=Ngo.contactperson1%></h1>
+    <h1> contact no: <%=Ngo.contactNo1%></h1>
+    <h1>  contact person:<%=Ngo.contactperson2%></h1>
+    <h1> contact no:<%=Ngo.contactNo2%></h1>
+    <h1> description:<%=Ngo.description%></h1>
+    <h1> followers:<%=Ngo.follower%></h1>
+    <a class="btn mt-3 mb-3 btn-primary" style="width:40%"  href="/NGO/homepage/<%=Ngo._id%>/edit">Edit Event </a> 

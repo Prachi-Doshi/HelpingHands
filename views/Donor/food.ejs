@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+<% for (let ngo of Ngo) { %>
+  <% for (let i=0;i<((ngo.categories).length);i++) { %>  
+   
+    <% if((ngo.categories[i])===cat) { %>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-body-secondary"><%=ngo.username%></h6>
+      <p class="card-text"><%=ngo.email%></p>
+      <p class="card-text">contact person :<%=ngo.contactperson1%><br>contact no:<%=ngo.contactNo1%></p>
+      <p class="card-text">contact person :<%=ngo.contactperson2%><br>contact no:<%=ngo.contactNo2%></p>
+      <p class="card-text"><%=ngo.description%></p>
+      <p class="card-text"><%=ngo.categories%></p>
+      
+      <p class="card-text">followers:<%=ngo.follower.length%></p>
+      <% if(currentUser!=undefined) { %>
+      <form action="/homepage/<%=ngo._id%>?_method=PUT" method="POST">
+        <button class="btn btn-outline-dark mt-1 mb-1">follow</button>
+      </form> 
+       <% } %>
+    </div>
+    <a class="btn btn-primary" href="/homepage/<%=ngo._id%>">View NGO</a>
+  </div>
+  <% } %>
+  <% } %>
+  <% } %>
